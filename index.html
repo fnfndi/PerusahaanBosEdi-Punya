@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.W TEKNIK - Jasa Pelayanan Service Elektronik Rumah Tangga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 14, 23, 0.95);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 243, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #00f3ff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(10, 14, 23, 0.85), rgba(10, 14, 23, 0.9)), 
+                        url('https://sfile.chatglm.cn/images-ppt/0cd1adc437f7.jpg') center/cover;
+            padding: 0 50px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff 0%, #00f3ff 50%, #bc13fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+        
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #b0c4de;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #00f3ff, #0099cc);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 50px;
+            background-color: #0a0e17;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-title p {
+            color: #8a9bb8;
+            font-size: 18px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(16, 25, 40, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00f3ff;
+        }
+        
+        .service-card p {
+            color: #8a9bb8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .service-card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #b0c4de;
+        }
+        
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00f3ff;
+        }
+        
+        .service-card .btn-secondary {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            color: #00f3ff;
+            border: 2px solid #00f3ff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .service-card .btn-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Why Choose Us Section */
+        .why-us {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #0a0e17 0%, #0d1321 100%);
+            position: relative;
+        }
+        
+        .why-us::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+        
+        .why-us-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .why-us-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .why-us-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .why-us-text p {
+            color: #8a9bb8;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: #00f3ff;
+        }
+        
+        .feature-text h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+        
+        .feature-text p {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        
+        .why-us-image {
+            position: relative;
+        }
+        
+        .why-us-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        /* About Us Section */
+        .about-us {
+            padding: 100px 50px;
+            background-color: #0a0e17;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            text-align: left;
+            margin-top: 50px;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-text p {
+            color: #8a9bb8;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #050810;
+            padding: 80px 50px 30px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #00f3ff;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #00f3ff, #bc13fe);
+        }
+        
+        .footer-column p {
+            color: #8a9bb8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #8a9bb8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00f3ff;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #8a9bb8;
+        }
+        
+        .contact-info i {
+            color: #00f3ff;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00f3ff;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: rgba(0, 243, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            color: #8a9bb8;
+        }
+        
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .floating-whatsapp i {
+            font-size: 30px;
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .why-us-content, .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .why-us-image, .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .services, .why-us, .about-us {
+                padding: 50px 20px;
+            }
+            
+            .floating-whatsapp {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-whatsapp i {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">A.W TEKNIK</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Solusi Terpercaya untuk Peralatan Rumah Tangga Anda</h1>
+            <p>Jasa service profesional, tukar-tambah unit, dan jual-beli peralatan rumah tangga dengan harga terbaik</p>
+            <a href="#services" class="btn-primary">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Kami menyediakan berbagai layanan untuk memenuhi kebutuhan peralatan rumah tangga Anda</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service Unit -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Service Unit</h3>
+                <p>Perbaikan profesional untuk berbagai jenis peralatan rumah tangga dengan teknisi berpengalaman dan sparepart berkualitas.</p>
+                <ul>
+                    <li>Service AC (Tidak dingin, bocor, mati total)</li>
+                    <li>Service Kulkas (Tidak dingin, freezer bermasalah)</li>
+                    <li>Service Mesin Cuci (Tidak berputar, bocor)</li>
+                    <li>Service Kompor Gas (Tidak menyala, api kecil)</li>
+                    <li>Dan peralatan rumah tangga lainnya</li>
+                </ul>
+                <a href="#" class="btn-secondary">Selengkapnya</a>
+            </div>
+            
+            <!-- Tukar-Tambah Unit -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Tukar-Tambah Unit</h3>
+                <p>Upgrade peralatan rumah tangga Anda dengan cara mudah dan menguntungkan melalui layanan tukar-tambah kami.</p>
+                <ul>
+                    <li>Tukar tambah AC lama dengan AC baru</li>
+                    <li>Tukar tambah kulkas dengan model lebih baru</li>
+                    <li>Tukar tambah mesin cuci dengan teknologi terbaru</li>
+                    <li>Penilaian unit adil dan transparan</li>
+                    <li>Proses cepat dan mudah</li>
+                </ul>
+                <a href="#" class="btn-secondary">Selengkapnya</a>
+            </div>
+            
+            <!-- Jual-Beli Unit -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Jual-Beli Unit</h3>
+                <p>Temukan peralatan rumah tangga berkualitas dengan harga terbaik atau jual unit Anda dengan harga yang pantas.</p>
+                <ul>
+                    <li>Jual beli AC baru dan bekas berkualitas</li>
+                    <li>Jual beli kulkas berbagai merek dan ukuran</li>
+                    <li>Jual beli mesin cuci berbagai tipe</li>
+                    <li>Kompor gas dan peralatan dapur lainnya</li>
+                    <li>Harga nego wajar dan transparan</li>
+                </ul>
+                <a href="#" class="btn-secondary">Selengkapnya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="why-us-container">
+            <div class="why-us-content">
+                <div class="why-us-text">
+                    <h2>Mengapa Memilih A.W TEKNIK?</h2>
+                    <p>Kami berkomitmen memberikan layanan terbaik untuk kepuasan pelanggan dengan pengalaman bertahun-tahun di bidang service peralatan rumah tangga.</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Teknisi Profesional</h4>
+                            <p>Tim teknisi berpengalaman dan bersertifikat untuk peralatan rumah tangga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Pelayanan Cepat</h4>
+                            <p>Respon cepat untuk panggilan service darurat di rumah Anda</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Garansi Terjamin</h4>
+                            <p>Garansi layanan dan sparepart yang digunakan untuk semua perbaikan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Harga Kompetitif</h4>
+                            <p>Harga transparan dan bersaing untuk semua layanan dan produk</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="why-us-image">
+                    <img src="https://sfile.chatglm.cn/images-ppt/0cd1adc437f7.jpg" alt="Why Choose Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <div class="section-title">
+            <h2>Tentang Kami</h2>
+            <p>Mengenal lebih dekat A.W TEKNIK</p>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>A.W TEKNIK</h2>
+                    <p>A.W TEKNIK adalah penyedia jasa service peralatan rumah tangga profesional yang telah berdiri sejak tahun 2015. Kami berdedikasi untuk memberikan solusi terbaik untuk segala kebutuhan peralatan rumah tangga Anda.</p>
+                    <p>Dengan tim teknisi berpengalaman dan peralatan modern, kami siap menangani berbagai jenis kerusakan pada AC, kulkas, mesin cuci, kompor gas, dan peralatan rumah tangga lainnya. Kami juga menyediakan layanan tukar-tambah dan jual-beli unit untuk memenuhi kebutuhan upgrade peralatan rumah tangga Anda.</p>
+                    <p>Komitmen kami adalah memberikan pelayanan berkualitas dengan harga yang kompetitif dan transparan. Kepuasan pelanggan adalah prioritas utama kami dalam memastikan peralatan rumah tangga Anda berfungsi dengan optimal.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://sfile.chatglm.cn/images-ppt/f4078f788174.jpg" alt="About Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <!-- Why Us -->
+            <div class="footer-column">
+                <h3>Why Us?</h3>
+                <p>A.W TEKNIK adalah pilihan terbaik untuk kebutuhan peralatan rumah tangga Anda karena:</p>
+                <ul class="footer-links">
+                    <li><a href="#">Teknisi profesional dan berpengalaman</a></li>
+                    <li><a href="#">Spesialis peralatan rumah tangga</a></li>
+                    <li><a href="#">Pelayanan cepat dan tepat waktu</a></li>
+                    <li><a href="#">Garansi terjamin untuk semua layanan</a></li>
+                    <li><a href="#">Harga transparan dan kompetitif</a></li>
+                    <li><a href="#">Sparepart berkualitas original</a></li>
+                </ul>
+            </div>
+            
+            <!-- About Us -->
+            <div class="footer-column">
+                <h3>About Us?</h3>
+                <p>A.W TEKNIK adalah penyedia jasa service peralatan rumah tangga profesional yang telah berdiri sejak tahun 2015. Kami berdedikasi untuk memberikan solusi terbaik untuk segala kebutuhan peralatan rumah tangga Anda.</p>
+                <p>Dengan tim teknisi berpengalaman dan peralatan modern, kami siap menangani berbagai jenis kerusakan pada AC, kulkas, mesin cuci, kompor gas, dan peralatan rumah tangga lainnya.</p>
+            </div>
+            
+            <!-- Contact Us -->
+            <div class="footer-column">
+                <h3>Contact Us!</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Teknologi No. 123, Jakarta Selatan, Indonesia</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+62 812-3456-7890</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@awteknik.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Senin - Sabtu: 09.00 - 18.00</span>
+                    </li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 A.W TEKNIK. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.service-card, .why-us-content, .about-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
